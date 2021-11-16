@@ -8,7 +8,7 @@ import os
 if __name__ == '__main__':
     parser = ArgumentParser(description="RPC eval")
     parser.add_argument('--ann_file', type=str,
-                        default='/media/hao/Data/RPC/instances_test2019.json')
+                        default='/media/xxx/Data/RPC/instances_test2019.json')
     parser.add_argument('--root', type=str, default='./result/faster_rcnn_r50_fpn_3x_rpc_protoS_ranking_mll/')
     parser.add_argument('--result_name', type=str, default='result')
     args = parser.parse_args()
