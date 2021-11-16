@@ -202,10 +202,10 @@ class ConvFCBBoxHead(BBoxHead):
         if self.proto:
             if self.proto == 1:
                 prototype = torch.load(
-                    '/media/xxx/Data/RPC/single_features/RPC_Single_Image_Features_res50_200/prototype.pth')
+                    '/prototype/prototype.pth') #You have to change the base dir.
             if self.proto == 2:
                 prototype = torch.load(
-                    '/media/xxx/Data/RPC/single_features/RPC_Single_Image_Features_res50_200_val/prototype.pth')
+                    '/prototype/prototype_val.pth') #You have to change the base dir.
             bg_proto = prototype.mean(dim=0).unsqueeze(0)
             prototype = torch.cat((prototype, bg_proto), 0).cuda()
             proto_w = self.proto_mlp(prototype).requires_grad_()
