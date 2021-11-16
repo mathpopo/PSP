@@ -1,7 +1,5 @@
-# 这个新的配置文件继承自一个原始配置文件，只需要突出必要的修改部分即可
 _base_ = '../faster_rcnn/faster_rcnn_r50_fpn_1x_coco.py'
 
-# 我们需要对头中的类别数量进行修改来匹配数据集的标注
 model = dict(
     roi_head=dict(
         bbox_head=dict(proto=1,
@@ -15,9 +13,8 @@ model = dict(
     )
 )
 
-# 修改数据集相关设置
 dataset_type = 'RpcDataset'
-data_root = '/media/hao/Data/RPC/'
+data_root = '/media/xxx/Data/RPC/'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 train_pipeline = [
@@ -48,21 +45,20 @@ test_pipeline = [
 data = dict(
     train=dict(
         type=dataset_type,
-        img_prefix='/media/hao/Data/RPC/val2019/',
-        ann_file='/media/hao/Data/RPC/instances_val2019.json',
+        img_prefix='/media/xxx/Data/RPC/val2019/',
+        ann_file='/media/xxx/Data/RPC/instances_val2019.json',
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
-        img_prefix='/media/hao/Data/RPC/val2019/',
-        ann_file='/media/hao/Data/RPC/instances_val2019.json',
+        img_prefix='/media/xxx/Data/RPC/val2019/',
+        ann_file='/media/xxx/Data/RPC/instances_val2019.json',
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
-        img_prefix='/media/hao/Data/RPC/test2019/',
-        ann_file='/media/hao/Data/RPC/instances_test2019.json',
+        img_prefix='/media/xxx/Data/RPC/test2019/',
+        ann_file='/media/xxx/Data/RPC/instances_test2019.json',
         pipeline=test_pipeline))
 
-# 我们可以使用预训练的 Faster R-CNN 来获取更好的性能
 load_from = 'checkpoints/faster_rcnn_r50_fpn_mstrain_3x_coco_20210524_110822-e10bd31c.pth'
 
 work_dir = './result/faster_rcnn_r50_fpn_3x_rpc_protoS_srr_mll'
