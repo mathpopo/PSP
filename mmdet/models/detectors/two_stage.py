@@ -137,7 +137,7 @@ class TwoStageDetector(BaseDetector):
 
         # multi-label loss
         if self.train_cfg is not None and 'mll' in self.train_cfg:
-            # 全局层面的特征和分类结果
+            # Features and classification results at global level
             x1 = self.backbone(img)
             if x1.is_cuda:
                 self.conv = self.conv.cuda()
@@ -145,7 +145,7 @@ class TwoStageDetector(BaseDetector):
             x1 = self.conv(x1)
             x1 = self.gap(x1) + self.gmp(x1)
             outs = self.fc(x1.squeeze_())
-            # 转换Ground Truth多标签
+            # Convert Ground Truth multi-label
             ml_gt = torch.zeros_like(outs)
             if outs.is_cuda:
                 ml_gt = ml_gt.cuda()
@@ -153,7 +153,7 @@ class TwoStageDetector(BaseDetector):
             for i in range(len(gt_labels_)):
                 for item in gt_labels_[i]:
                     ml_gt[i][item] = 1
-            # 计算多标签分类损失
+            # Calculate multi-label classification loss
             loss_mll_cls = self.ml_loss(torch.sigmoid(outs), ml_gt)
             losses['loss_mll_cls'] = loss_mll_cls
 
