@@ -31,25 +31,26 @@ Before training or testing, you must modify the contents of the paths in the fol
 1. configs/rpc/xxx.py  
     In these configuration files, you need modify the following parameters.  
     
-    data_root = '<your_dataset_root_path>'  
-    img_prefix = '<your_train_or_test_dataset_path>'  
-    ann_file = '<your_train_or_test_annotation_file>'  
+    data_root = '{your_dataset_root_path}'  
+    img_prefix = '{your_train_or_test_dataset_path}'  
+    ann_file = '{your_train_or_test_annotation_file}'  
     
 2. rpc_eval.py  
-    The default value of '--ann_file' can be modified as '<your_train_or_test_annotation_file>'.  
+    The default value of '--ann_file' can be modified as '{your_train_or_test_annotation_file}'.  
+    
 3. rpc_one_img_py  
     In this file, you need modify the test annotation file in following:
     
-    with open('<your_test_annotation_file>', 'r') as f:  
-    img ='<test_image_file>'  
-    out_file='<result_out_file>'  
+    with open('{your_test_annotation_file}', 'r') as f:  
+    img ='{test_image_file}'  
+    out_file='{result_out_file}'  
     
 --------------------------
 ## Train
 
 We trian our model in one 2080Ti card, and the command is:  
 
-    python tools/train.py <config file>  
+    python tools/train.py {config file}  
 and an example is:  
 
     python tools/train.py configs/rpc/faster_rcnn_r50_fpn_3x_rpc_protoS_srr_mll.py  
@@ -59,7 +60,7 @@ and an example is:
 
 Our test command is:  
 
-     python tools/test.py <config file> <checkpoint_file> [--out <result_file>] [--eval bbox]  
+     python tools/test.py {config file} {checkpoint_file} [--out {result_file}] [--eval bbox]  
 and an example is:  
 
     python tools/test.py configs/rpc/faster_rcnn_r50_fpn_3x_rpc_protoS_srr_mll.py \
@@ -72,7 +73,7 @@ and an example is:
 Since 4 metrics other than mAP50 and mmAP are used, we perform the computation of these 4 metrics separately for the result file, i.e. rpc_eval.py.  
 This evaluation file can print 4 metric values for all clutter patterns. And the command is:  
 
-     python rpc_eval.py [--root <result_root_path>]  
+     python rpc_eval.py [--root {result_root_path}]  
 and an example is:  
 
     python rpc_eval.py --root ./result/faster_rcnn_r50_fpn_3x_rpc_protoS_srr_mll/  
