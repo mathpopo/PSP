@@ -40,8 +40,8 @@ Before training or testing, you must modify the contents of the paths in the fol
 3. rpc_one_img_py  
     In this file, you need modify the test annotation file in following:
     
-    with open('<your_train_or_test_annotation_file>', 'r') as f:  
-    image file in "img ='<test_image_file>'  
+    with open('<your_test_annotation_file>', 'r') as f:  
+    img ='<test_image_file>'  
     out_file='<result_out_file>'  
     
 --------------------------
