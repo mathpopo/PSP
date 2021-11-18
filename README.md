@@ -19,7 +19,7 @@ Or you can download our code and the file "README.md" of MMDetection, then run '
 --------------------------
 ## Dataset
 
-You can download the RPC dataset by this two urls:   
+You can download the RPC dataset by these two urls:   
     https://www.kaggle.com/diyer22/retail-product-checkout-dataset  
     https://pan.baidu.com/s/1vrrLaSpJe5JxT3zhYfOaog  
     
@@ -48,7 +48,7 @@ Before training or testing, you must modify the contents of the paths in the fol
 --------------------------
 ## Train
 
-We trian our model in one 2080Ti card, and the command is:  
+We train our model in one 2080Ti card, and the training command is:  
 
     python tools/train.py {config file}  
 and an example is:  
@@ -58,7 +58,7 @@ and an example is:
 --------------------------
 ## Test
 
-Our test command is:  
+Our testing command is:  
 
      python tools/test.py {config file} {checkpoint_file} [--out {result_file}] [--eval bbox]  
 and an example is:  
@@ -71,7 +71,7 @@ and an example is:
 ## Evaluate
 
 Since 4 metrics other than mAP50 and mmAP are used, we perform the computation of these 4 metrics separately for the result file, i.e. rpc_eval.py.  
-This evaluation file can print 4 metric values for all clutter patterns. And the command is:  
+This evaluation file can print 4 metric values for all clutter patterns. And the evaluating command is:  
 
      python rpc_eval.py [--root {result_root_path}]  
 and an example is:  
