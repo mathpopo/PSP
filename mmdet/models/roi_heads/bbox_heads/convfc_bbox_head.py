@@ -214,9 +214,9 @@ class ConvFCBBoxHead(BBoxHead):
             cls_score = self.fc_cls(x_cls) if self.with_cls else None
         if self.training:
             if self.ranking:
-                _, idx = cls_score.topk(1)
+                _, idx = cls_score.topk(2)
                 for i in range(len(cls_score)):
-                    if cls_score.shape[1] - 1 not in idx[i]:
+                    if cls_score.shape[1] - 1 not in idx[i][0]:
                         if self.ranking == 1:
                             cls_score[i][-1] = (cls_score[i][idx[i][0]] + cls_score[i][idx[i][1]]) / 2
                         elif 0 < self.ranking < 1:
