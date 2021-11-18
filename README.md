@@ -30,20 +30,22 @@ Before training or testing, you must modify the contents of the paths in the fol
 
 1. configs/rpc/xxx.py  
     In these configuration files, you need modify the following parameters.  
-    
-    data_root = '{your_dataset_root_path}'  
-    img_prefix = '{your_train_or_test_dataset_path}'  
+    ```
+    data_root = '{your_dataset_root_path}'
+    img_prefix = '{your_train_or_test_dataset_path}'
     ann_file = '{your_train_or_test_annotation_file}'  
+    ```
     
 2. rpc_eval.py  
-    The default value of '--ann_file' can be modified as '{your_train_or_test_annotation_file}'.  
+    The default value of `--ann_file` can be modified as `{your_train_or_test_annotation_file}`.  
     
 3. rpc_one_img_py  
     In this file, you need modify the test annotation file in following:
-    
+    ```
     with open('{your_test_annotation_file}', 'r') as f:  
     img ='{test_image_file}'  
     out_file='{result_out_file}'  
+    ```
     
 --------------------------
 ## Train
